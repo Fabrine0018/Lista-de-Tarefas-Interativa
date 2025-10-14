@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas Interativa - ATIVIDADE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 
+    INSTRUÇÕES PARA O ALUNO:
+    
+    Este é o template base para a atividade de Lista de Tarefas Interativa.
+    Você deve implementar as funcionalidades JavaScript e completar o CSS.
+    
+    FUNCIONALIDADES OBRIGATÓRIAS:
+    1. Adicionar novas tarefas com prioridade
+    2. Marcar tarefas como concluídas/pendentes
+    3. Editar tarefas existentes
+    4. Excluir tarefas
+    5. Filtrar tarefas (todas, pendentes, concluídas, por prioridade)
+    6. Buscar tarefas por texto
+    7. Limpar tarefas concluídas
+    8. Persistir dados no localStorage
+    9. Validações de entrada
+    10. Interface responsiva
+    
+    CRITÉRIOS DE AVALIAÇÃO:
+    - Funcionalidade (40 pontos)
+    - Qualidade do código JavaScript (25 pontos)
+    - Design e CSS (20 pontos)
+    - Responsividade (10 pontos)
+    - Validações e UX (5 pontos)
+    -->
+    
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-tasks"></i> Minha Lista de Tarefas</h1>
+            <p class="subtitle">Organize suas atividades de forma eficiente</p>
+        </header>
+
+        <!-- SEÇÃO 1: ENTRADA DE TAREFAS -->
+        <div class="task-input-section">
+            <div class="input-group">
+                <!-- TODO: Implementar validação de entrada -->
+                <input type="text" id="taskInput" placeholder="Digite uma nova tarefa..." maxlength="100">
+                <select id="prioritySelect">
+                    <option value="baixa">Baixa</option>
+                    <option value="media" selected>Média</option>
+                    <option value="alta">Alta</option>
+                </select>
+                <!-- TODO: Implementar função addTask() -->
+                <button id="addTaskBtn"><i class="fas fa-plus"></i> Adicionar</button>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 2: CONTROLES -->
+        <div class="controls">
+            <div class="filter-section">
+                <label for="filterSelect">Filtrar por:</label>
+                <!-- TODO: Implementar filtros -->
+                <select id="filterSelect">
+                    <option value="todas">Todas</option>
+                    <option value="pendentes">Pendentes</option>
+                    <option value="concluidas">Concluídas</option>
+                    <option value="alta">Prioridade Alta</option>
+                    <option value="media">Prioridade Média</option>
+                    <option value="baixa">Prioridade Baixa</option>
+                </select>
+            </div>
+            
+            <div class="search-section">
+                <!-- TODO: Implementar busca -->
+                <input type="text" id="searchInput" placeholder="Buscar tarefas...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+
+            <!-- TODO: Implementar atualização das estatísticas -->
+            <div class="stats">
+                <span id="totalTasks">Total: 0</span>
+                <span id="completedTasks">Concluídas: 0</span>
+                <span id="pendingTasks">Pendentes: 0</span>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 3: LISTA DE TAREFAS -->
+        <div class="task-list-container">
+            <!-- TODO: Implementar renderização dinâmica das tarefas -->
+            <ul id="taskList" class="task-list">
+                <!-- Tarefas serão inseridas aqui dinamicamente via JavaScript -->
+            </ul>
+            <div id="emptyState" class="empty-state">
+                <i class="fas fa-clipboard-list"></i>
+                <h3>Nenhuma tarefa encontrada</h3>
+                <p>Adicione uma nova tarefa para começar!</p>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 4: AÇÕES EM LOTE -->
+        <div class="actions">
+            <!-- TODO: Implementar clearCompleted() e clearAll() -->
+            <button id="clearCompletedBtn" class="btn-secondary">
+                <i class="fas fa-trash"></i> Limpar Concluídas
+            </button>
+            <button id="clearAllBtn" class="btn-danger">
+                <i class="fas fa-trash-alt"></i> Limpar Todas
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL PARA EDIÇÃO DE TAREFAS -->
+    <!-- TODO: Implementar funcionalidade de edição -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Editar Tarefa</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="editTaskInput" placeholder="Texto da tarefa">
+                <select id="editPrioritySelect">
+                    <option value="baixa">Baixa</option>
+                    <option value="media">Média</option>
+                    <option value="alta">Alta</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button id="saveEditBtn" class="btn-primary">Salvar</button>
+                <button id="cancelEditBtn" class="btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TODO: Implementar todas as funcionalidades no arquivo script.js -->
+    <script src="script.js"></script>
+</body>
+</html>
+

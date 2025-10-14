@@ -1,0 +1,574 @@
+/* 
+ATIVIDADE: LISTA DE TAREFAS INTERATIVA - CSS
+
+INSTRUÇÕES PARA O ALUNO:
+- Complete os estilos CSS marcados com TODO
+- Implemente responsividade para dispositivos móveis
+- Adicione animações e transições
+- Mantenha consistência visual
+- Use as variáveis CSS fornecidas
+
+PONTUAÇÃO CSS (20 pontos):
+- Layout e estrutura (8 pontos)
+- Responsividade (6 pontos)
+- Animações e transições (3 pontos)
+- Consistência visual (3 pontos)
+*/
+
+/* ===== VARIÁVEIS CSS ===== */
+:root {
+    --primary-color: #4facfe;
+    --primary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-bg: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #6c757d;
+    --border-color: #e9ecef;
+    
+    --border-radius: 8px;
+    --border-radius-lg: 15px;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+    
+    --transition: all 0.3s ease;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== RESET E CONFIGURAÇÕES BÁSICAS ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--text-primary);
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+/* ===== HEADER ===== */
+.header {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.header i {
+    margin-right: 10px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* ===== SEÇÃO DE ENTRADA DE TAREFAS ===== */
+.task-input-section {
+    padding: 30px;
+    background: #f8f9fa;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* TODO: Complete os estilos dos inputs */
+#taskInput {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    /* TODO: Adicione estilos de foco */
+}
+
+#taskInput:focus {
+    /* TODO: Implemente estilos de foco */
+    outline: none;
+    /* Adicione border-color e box-shadow */
+}
+
+#prioritySelect {
+    /* TODO: Complete os estilos do select */
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+}
+
+#addTaskBtn {
+    /* TODO: Complete os estilos do botão */
+    padding: 15px 25px;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+#addTaskBtn:hover {
+    /* TODO: Adicione efeito hover */
+    transform: translateY(-2px);
+    /* Adicione box-shadow */
+}
+
+/* ===== CONTROLES ===== */
+.controls {
+    padding: 20px 30px;
+    background: #f8f9fa;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter-section, .search-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-section label {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+#filterSelect, #searchInput {
+    /* TODO: Complete os estilos */
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.search-section {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    color: var(--text-secondary);
+}
+
+.stats {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.stats span {
+    background: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    font-weight: 600;
+}
+
+/* ===== LISTA DE TAREFAS ===== */
+.task-list-container {
+    min-height: 300px;
+    padding: 30px;
+}
+
+.task-list {
+    list-style: none;
+}
+
+/* TODO: Complete os estilos dos itens de tarefa */
+.task-item {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.task-item:hover {
+    /* TODO: Adicione efeito hover */
+    transform: translateY(-2px);
+    /* Adicione box-shadow */
+}
+
+.task-item.completed {
+    /* TODO: Estilos para tarefas concluídas */
+    opacity: 0.7;
+    background: #f8f9fa;
+}
+
+.task-item.completed .task-text {
+    /* TODO: Adicione text-decoration e color */
+    text-decoration: line-through;
+    color: var(--text-secondary);
+}
+
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.task-text {
+    flex: 1;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+/* TODO: Complete os estilos das prioridades */
+.task-priority {
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.priority-alta {
+    /* TODO: Cores para prioridade alta (vermelho) */
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+.priority-media {
+    /* TODO: Cores para prioridade média (laranja) */
+    background: #fff3e0;
+    color: #ef6c00;
+    border: 1px solid #ffcc02;
+}
+
+.priority-baixa {
+    /* TODO: Cores para prioridade baixa (verde) */
+    background: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.task-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-left: 10px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.task-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.edit-btn {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.edit-btn:hover {
+    background: #bbdefb;
+}
+
+.delete-btn {
+    background: #ffebee;
+    color: #d32f2f;
+}
+
+.delete-btn:hover {
+    background: #ffcdd2;
+}
+
+/* ===== ESTADO VAZIO ===== */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+/* ===== AÇÕES ===== */
+.actions {
+    padding: 20px 30px;
+    background: #f8f9fa;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* TODO: Complete os estilos dos botões */
+.btn-secondary, .btn-danger, .btn-primary {
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    /* TODO: Adicione efeito hover */
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    /* TODO: Adicione efeito hover */
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    /* TODO: Adicione efeito hover */
+}
+
+/* ===== MODAL ===== */
+/* TODO: Complete os estilos do modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* TODO: Adicione animação fadeIn */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 0;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    /* TODO: Adicione animação slideIn */
+}
+
+.modal-header {
+    padding: 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.close {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.close:hover {
+    color: var(--text-primary);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-body input, .modal-body select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.modal-footer {
+    padding: 20px;
+    background: #f8f9fa;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    border-radius: 0 0 10px 10px;
+}
+
+/* ===== ANIMAÇÕES ===== */
+/* TODO: Implemente as animações */
+@keyframes fadeIn {
+    /* TODO: Animação de fade in */
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    /* TODO: Animação de slide in */
+    from { 
+        transform: translateY(-50px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+}
+
+.task-item.removing {
+    /* TODO: Animação de remoção */
+    animation: slideOut 0.3s ease forwards;
+}
+
+@keyframes slideOut {
+    /* TODO: Animação de slide out */
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* ===== RESPONSIVIDADE ===== */
+/* TODO: Implemente responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .container {
+        /* TODO: Ajustes para tablet */
+        margin: 10px;
+        border-radius: 10px;
+    }
+    
+    .header h1 {
+        /* TODO: Ajuste do tamanho da fonte */
+        font-size: 2rem;
+    }
+    
+    .input-group {
+        /* TODO: Layout vertical para mobile */
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .controls {
+        /* TODO: Layout vertical para controles */
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .stats {
+        /* TODO: Centralizar estatísticas */
+        justify-content: center;
+    }
+    
+    .task-item {
+        /* TODO: Layout vertical para itens de tarefa */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .task-actions {
+        /* TODO: Posicionamento das ações */
+        align-self: flex-end;
+    }
+    
+    .actions {
+        /* TODO: Layout vertical para ações */
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        /* TODO: Ajustes para mobile pequeno */
+        padding: 10px;
+    }
+    
+    .task-input-section, .task-list-container {
+        /* TODO: Reduzir padding */
+        padding: 20px;
+    }
+    
+    .controls {
+        /* TODO: Reduzir padding */
+        padding: 15px 20px;
+    }
+}
+
+/* ===== ESTILOS ADICIONAIS PARA NOTIFICAÇÕES ===== */
+/* TODO: Implemente estilos para notificações (opcional) */
+.notification {
+    /* Estilos serão adicionados via JavaScript */
+}
+
+/* TODO: Adicione seus próprios estilos personalizados aqui */
+

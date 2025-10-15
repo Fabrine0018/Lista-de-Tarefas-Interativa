@@ -1,9 +1,9 @@
 /*
 ATIVIDADE: LISTA DE TAREFAS INTERATIVA - JAVASCRIPT
 
-NOME DO ALUNO: ________________________________
-TURMA: ________________________________________
-DATA: _________________________________________
+NOME DO ALUNO: Fabrine Vinente Velame
+TURMA: 3ºB informática
+DATA: 13/10/2025
 
 INSTRUÇÕES GERAIS:
 - Implemente todas as funcionalidades marcadas com TODO
@@ -45,16 +45,9 @@ let editingTaskId = null; // ID da tarefa sendo editada
 // ===== INICIALIZAÇÃO =====
 // TODO: Implemente a função de inicialização
 document.addEventListener('DOMContentLoaded', function() {
-    // TODO: Carregue as tarefas do localStorage
     loadTasks();
-    
-    // TODO: Configure todos os event listeners
     setupEventListeners();
-    
-    // TODO: Renderize a lista inicial
     renderTasks();
-    
-    // TODO: Adicione tarefas de exemplo se não houver nenhuma
     if (tasks.length === 0) {
         addExampleTasks();
     }
@@ -63,55 +56,48 @@ document.addEventListener('DOMContentLoaded', function() {
 // ===== CONFIGURAÇÃO DE EVENT LISTENERS =====
 // TODO: Implemente a função para configurar todos os event listeners
 function setupEventListeners() {
-    // TODO: Event listener para adicionar tarefa
     const addBtn = document.getElementById('addTaskBtn');
     const taskInput = document.getElementById('taskInput');
     
-    // addBtn.addEventListener('click', addTask);
-    // taskInput.addEventListener('keypress', function(e) {
-    //     if (e.key === 'Enter') addTask();
-    // });
+    addBtn.addEventListener('click', addTask);
+    taskInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') addTask();
+    });
     
-    // TODO: Event listener para filtros
     const filterSelect = document.getElementById('filterSelect');
-    // filterSelect.addEventListener('change', function(e) {
-    //     currentFilter = e.target.value;
-    //     renderTasks();
-    // });
+    filterSelect.addEventListener('change', function(e) {
+        currentFilter = e.target.value;
+        renderTasks();
+    });
     
-    // TODO: Event listener para busca
     const searchInput = document.getElementById('searchInput');
-    // searchInput.addEventListener('input', function(e) {
-    //     searchTerm = e.target.value.toLowerCase();
-    //     renderTasks();
-    // });
+    searchInput.addEventListener('input', function(e) {
+        searchTerm = e.target.value.toLowerCase();
+        renderTasks();
+    });
     
-    // TODO: Event listeners para ações em lote
     const clearCompletedBtn = document.getElementById('clearCompletedBtn');
     const clearAllBtn = document.getElementById('clearAllBtn');
     
-    // clearCompletedBtn.addEventListener('click', clearCompleted);
-    // clearAllBtn.addEventListener('click', clearAll);
+    clearCompletedBtn.addEventListener('click', clearCompleted);
+    clearAllBtn.addEventListener('click', clearAll);
     
-    // TODO: Event listeners para modal
     const saveEditBtn = document.getElementById('saveEditBtn');
     const cancelEditBtn = document.getElementById('cancelEditBtn');
     const closeBtn = document.querySelector('.close');
     const modal = document.getElementById('editModal');
     
-    // saveEditBtn.addEventListener('click', saveEdit);
-    // cancelEditBtn.addEventListener('click', closeModal);
-    // closeBtn.addEventListener('click', closeModal);
+    saveEditBtn.addEventListener('click', saveEdit);
+    cancelEditBtn.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
     
-    // TODO: Fechar modal clicando fora
-    // modal.addEventListener('click', function(e) {
-    //     if (e.target === modal) closeModal();
-    // });
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+    });
     
-    // TODO: Tecla ESC para fechar modal
-    // document.addEventListener('keydown', function(e) {
-    //     if (e.key === 'Escape') closeModal();
-    // });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+    });
 }
 
 // ===== FUNÇÕES PRINCIPAIS =====
@@ -143,15 +129,10 @@ function addTask() {
         createdAt: new Date().toISOString(),
         completedAt: null
     };
-    
     // TODO: Adicione a tarefa ao array
     tasks.unshift(task); // Adiciona no início do array
-    
-    // TODO: Salve no localStorage
-    saveTasks();
-    
-    // TODO: Renderize a lista
-    renderTasks();
+    saveTasks(); // TODO: Salve no localStorage
+    renderTasks();  // TODO: Renderize a lista
     
     // TODO: Limpe os campos
     taskInput.value = '';
@@ -269,10 +250,7 @@ function clearCompleted() {
     
     // TODO: Confirme a ação
     if (confirm(`Excluir ${completedCount} tarefa(s) concluída(s)?`)) {
-        // TODO: Remova as tarefas concluídas
         tasks = tasks.filter(t => !t.completed);
-        
-        // TODO: Salve e renderize
         saveTasks();
         renderTasks();
         
@@ -341,6 +319,7 @@ function createTaskElement(task) {
     const li = document.createElement('li');
     li.className = `task-item ${task.completed ? 'completed' : ''}`;
     li.setAttribute('data-task-id', task.id);
+    li.setAttribute('draggable', 'true');
     
     // TODO: Formate as datas
     const createdDate = new Date(task.createdAt).toLocaleDateString('pt-BR');
@@ -520,26 +499,84 @@ function addExampleTasks() {
     saveTasks();
     renderTasks();
 }
+/* Implementando drag nas tarefas */
+const tarefaArrastada = document.querySelectorAll('.task-item');
+const listaDeTarefas = document.querySelectorAll('#taskList');
 
+let draggingItem = null;
+
+// 1. Eventos do item arrastável
+tarefaArrastada.forEach(task => {
+  task.addEventListener('dragstart', (e) => {
+    draggingItem = task;
+    setTimeout(() => {
+      task.classList.add('dragging');
+    }, 0);
+    console.log('Drag Start');
+  });
+
+  task.addEventListener('dragend', () => {
+    setTimeout(() => {
+      if (draggingItem) {
+        draggingItem.classList.remove('dragging');
+      }
+      draggingItem = null;
+      console.log('Drag End');
+    }, 0);
+  });
+});
+
+// 2. Eventos dos contêineres de destino
+listaDeTarefas.forEach(container => {
+  container.addEventListener('dragover', (e) => {
+    e.preventDefault(); // Permite soltar
+    const afterElement = getDragAfterElement(container, e.clientY);
+    const currentElement = document.querySelector('.dragging');
+    
+    if (!currentElement) return;
+
+    if (afterElement == null) {
+      container.appendChild(currentElement);
+    } else {
+      container.insertBefore(currentElement, afterElement);
+    }
+    console.log('Drag Over');
+  });
+});
+
+// Função para determinar a posição correta de inserção
+function getDragAfterElement(container, y) {
+  const draggableElements = [...container.querySelectorAll('.task-item:not(.dragging)')];
+
+  return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - box.height / 2;
+    if (offset < 0 && offset > closest.offset) {
+      return { offset: offset, element: child };
+    } else {
+      return closest;
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
+}
 // ===== FUNCIONALIDADES EXTRAS (OPCIONAL) =====
 
 // TODO: Implemente funcionalidades extras para pontos adicionais:
-// - Drag and drop para reordenar tarefas
-// - Categorias/tags para tarefas
-// - Data de vencimento
+// - Drag and drop para reordenar tarefas - tentar
+// - Categorias/tags para tarefas - tentar
+// - Data de vencimento - tentar
 // - Exportar/importar tarefas
-// - Modo escuro
+// - Modo escuro - tentar
 // - Atalhos de teclado
 
 /*
 CHECKLIST DE ENTREGA:
-□ Todas as funcionalidades obrigatórias implementadas
-□ Código comentado e organizado
-□ Validações de entrada funcionando
-□ Persistência no localStorage funcionando
-□ Interface responsiva
-□ Testado em diferentes navegadores
-□ Sem erros no console do navegador
+□ Todas as funcionalidades obrigatórias implementadas ok
+□ Código comentado e organizado ok
+□ Validações de entrada funcionando ok
+□ Persistência no localStorage funcionando ok
+□ Interface responsiva ok
+□ Testado em diferentes navegadores ok
+□ Sem erros no console do navegador ok
 □ Arquivo ZIP com todos os arquivos
 */
 

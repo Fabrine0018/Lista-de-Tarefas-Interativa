@@ -14,6 +14,7 @@ PONTUAÇÃO CSS (20 pontos):
 - Animações e transições (3 pontos)
 - Consistência visual (3 pontos)
 */
+/* Estilo do select */
 
 /* ===== VARIÁVEIS CSS ===== */
 :root {
@@ -25,7 +26,7 @@ PONTUAÇÃO CSS (20 pontos):
     --warning-color: #ffc107;
     --info-color: #17a2b8;
     
-    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-gradient: linear-gradient(135deg, #66eae1 0%, #4b9ea2 100%);
     --card-bg: #ffffff;
     --text-primary: #333333;
     --text-secondary: #6c757d;
@@ -108,26 +109,32 @@ body {
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
     font-size: 1rem;
-    transition: var(--transition);
-    /* TODO: Adicione estilos de foco */
+    transition: box-shadow (--transition), border-color (--transition);
 }
 
 #taskInput:focus {
-    /* TODO: Implemente estilos de foco */
+    /* TODO: Implemente estilos de foco: border-color e box-shadow */
+    border-color:  #4facfe;
+    box-shadow: 0 5px 15px rgb(79, 172, 254, 0.2);;
     outline: none;
-    /* Adicione border-color e box-shadow */
 }
 
 #prioritySelect {
+    /*option melhorar*/
     /* TODO: Complete os estilos do select */
-    padding: 15px;
+    padding: 16px;
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
     font-size: 1rem;
     background: white;
     cursor: pointer;
 }
-
+select > option{
+    background-color: var(--card-bg);
+    border: none;
+    border: 1px solid --text-secondary;
+    border-radius: 8px; 
+}
 #addTaskBtn {
     /* TODO: Complete os estilos do botão */
     padding: 15px 25px;
@@ -137,14 +144,14 @@ body {
     border-radius: var(--border-radius);
     font-size: 1rem;
     cursor: pointer;
-    transition: var(--transition);
+    transition: transform (--transition), box-shadow (--transition);
     font-weight: 600;
 }
 
 #addTaskBtn:hover {
-    /* TODO: Adicione efeito hover */
+    /* TODO: Adicione no efeito hover adicione box-shadow*/
     transform: translateY(-2px);
-    /* Adicione box-shadow */
+    box-shadow: --shadow;
 }
 
 /* ===== CONTROLES ===== */
@@ -223,21 +230,21 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    transition: var(--transition);
+    transition: transform (--transition), box-shadow(--transition);
     position: relative;
     overflow: hidden;
 }
 
 .task-item:hover {
-    /* TODO: Adicione efeito hover */
+    /* TODO: Adicione efeito hover - Adicione box-shadow */
     transform: translateY(-2px);
-    /* Adicione box-shadow */
+    box-shadow: var(--shadow);
 }
 
 .task-item.completed {
     /* TODO: Estilos para tarefas concluídas */
     opacity: 0.7;
-    background: #f8f9fa;
+    background: #defaec;
 }
 
 .task-item.completed .task-text {
@@ -363,7 +370,7 @@ body {
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
-    transition: var(--transition);
+    transition: transform (--transition), box-shadow (--transition);
 }
 
 .btn-secondary {
@@ -372,7 +379,8 @@ body {
 }
 
 .btn-secondary:hover {
-    /* TODO: Adicione efeito hover */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 .btn-danger {
@@ -381,7 +389,8 @@ body {
 }
 
 .btn-danger:hover {
-    /* TODO: Adicione efeito hover */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 .btn-primary {
@@ -390,7 +399,8 @@ body {
 }
 
 .btn-primary:hover {
-    /* TODO: Adicione efeito hover */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 /* ===== MODAL ===== */
@@ -404,16 +414,18 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s ease-in forwards;
     /* TODO: Adicione animação fadeIn */
 }
 
 .modal-content {
     background-color: white;
     margin: 10% auto;
-    padding: 0;
+    padding: 0; 
     border-radius: 10px;
     width: 90%;
     max-width: 500px;
+    animation: slideIn 0.5s ease-in forwards;
     /* TODO: Adicione animação slideIn */
 }
 

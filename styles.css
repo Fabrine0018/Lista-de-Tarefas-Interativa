@@ -595,5 +595,23 @@ select > option{
     
 }
 
-/* TODO: Adicione seus próprios estilos personalizados aqui */
+.trocarTema{
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: box-shadow (--transition), border-color (--transition);
+}
+.trocarTema:focus {
+    border-color:  #4facfe;
+    box-shadow: 0 5px 15px rgb(79, 172, 254, 0.2);;
+    outline: none;
+}
+
+#content-tema{
+    display: flex;
+    padding-right: 5%;
+    justify-content: right;
+}
 

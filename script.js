@@ -328,7 +328,7 @@ function createTaskElement(task) {
     // TODO: Crie o HTML interno
     li.innerHTML = `
         <input type="checkbox" class="task-checkbox" ${task.completed ? 'checked' : ''} 
-               onchange="toggleTask(${task.id})">
+        onchange="toggleTask(${task.id})">
         <span class="task-text">${escapeHtml(task.text)}</span>
         <span class="task-priority priority-${task.priority}">${task.priority}</span>
         <span class="task-date">
@@ -559,7 +559,11 @@ function getDragAfterElement(container, y) {
   }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 // ===== FUNCIONALIDADES EXTRAS (OPCIONAL) =====
-
+const themeToggle = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement; // Pega o elemento
+themeToggle.addEventListener('click', () => {
+htmlElement.classList.toggle('dark-mode');
+});
 // TODO: Implemente funcionalidades extras para pontos adicionais:
 // - Drag and drop para reordenar tarefas - tentar
 // - Categorias/tags para tarefas - tentar

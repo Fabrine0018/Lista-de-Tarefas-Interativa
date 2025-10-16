@@ -578,8 +578,21 @@ select > option{
 
 /* ===== ESTILOS ADICIONAIS PARA NOTIFICAÇÕES ===== */
 /* TODO: Implemente estilos para notificações (opcional) */
-.notification {
-    /* Estilos serão adicionados via JavaScript */
+.dark-mode {
+    --primary-color: #000000;
+    --primary-gradient: linear-gradient(135deg, #970a61 0%, #00f2fe 100%);
+    --secondary-color: #4ef003;
+    --success-color: #b59bf3;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #960000;
+    
+    --bg-gradient: linear-gradient(135deg, #2200e2 0%, #c7a200 100%);
+    --card-bg: #ffffff;
+    --text-primary: #54025c;
+    --text-secondary: #6d7d6c;
+    --border-color: #e9ecef;
+    
 }
 
 /* TODO: Adicione seus próprios estilos personalizados aqui */

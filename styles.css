@@ -20,9 +20,8 @@ PONTUAÇÃO CSS (20 pontos):
 :root {
     --primary-color: #4facfe;
     --primary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    --secondary-color: #6c757d;
+    --secondary-color: #00f2fe;
     --danger-color: #dc3545;
-
     
     --bg-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     --card-bg: #ffffff;
@@ -30,9 +29,14 @@ PONTUAÇÃO CSS (20 pontos):
     --text-secondary: #6c757d;
     --border-color: #e9ecef;
     --corFundo: #f8f9fa;
-    --corFonte:#130101;
+    --corFonte:#00447f;
     --corHeader: white;
-    
+    --EditBtn: #1976d2;
+    --DelBtn: #d32f2f;
+    --HoverEditBtn: rgb(25, 118, 210, 0.3);
+    --HoverDelBtn: rgb(211, 47, 47, 0.3);
+    --TarefaConcluida: #a2ffff80;
+    --buttonTema: #f8f9fa;
     --border-radius: 8px;
     --border-radius-lg: 15px;
     --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -107,6 +111,8 @@ body {
 #taskInput {
     flex: 1;
     padding: 15px;
+    background-color: var(--corFundo);
+    color: var(--corFonte);
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
     font-size: 1rem;
@@ -123,6 +129,7 @@ body {
 #prioritySelect {
     /*option melhorar*/
     /* TODO: Complete os estilos do select */
+    color: var(--corFonte);
     padding: 16px;
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
@@ -186,6 +193,8 @@ select > option{
     border-radius: 6px;
     font-size: 0.9rem;
     background: var(--corFundo);
+    background-color: var(--corFundo);
+    color: var(--corFonte);
 }
 
 .search-section {
@@ -203,10 +212,12 @@ select > option{
     gap: 15px;
     font-size: 0.9rem;
     color: var(--text-secondary);
+    background-color: var(--corFundo);
 }
 
 .stats span {
-    background: white;
+    background: var(--corFundo);
+    color: var(--corFonte);
     padding: 5px 10px;
     border-radius: 15px;
     border: 1px solid var(--border-color);
@@ -250,7 +261,7 @@ select > option{
 .task-item.completed {
     /* TODO: Estilos para tarefas concluídas */
     opacity: 0.7;
-    background: #defaec;
+    background: var(--TarefaConcluida);
 }
 
 .task-item.completed .task-text {
@@ -260,6 +271,7 @@ select > option{
 }
 
 .task-checkbox {
+    background-color: var(--corFundo);
     width: 20px;
     height: 20px;
     cursor: pointer;
@@ -275,6 +287,8 @@ select > option{
 
 /* TODO: Complete os estilos das prioridades */
 .task-priority {
+    background-color: var(--corFundo);
+    color: var(--corFonte);
     padding: 5px 12px;
     border-radius: 15px;
     font-size: 0.8rem;
@@ -284,21 +298,21 @@ select > option{
 
 .priority-alta {
     /* TODO: Cores para prioridade alta (vermelho) */
-    background: #ffebee;
+    background: var(--corFundo);
     color: #c62828;
     border: 1px solid #ffcdd2;
 }
 
 .priority-media {
     /* TODO: Cores para prioridade média (laranja) */
-    background: #fff3e0;
+    background: var(--corFundo);
     color: #ef6c00;
     border: 1px solid #ffcc02;
 }
 
 .priority-baixa {
     /* TODO: Cores para prioridade baixa (verde) */
-    background: #e8f5e8;
+    background: var(--corFundo);
     color: #2e7d32;
     border: 1px solid #c8e6c9;
 }
@@ -324,21 +338,21 @@ select > option{
 }
 
 .edit-btn {
-    background: #e3f2fd;
-    color: #1976d2;
+    background: var(--corFundo);
+    color: var(--EditBtn);
 }
 
 .edit-btn:hover {
-    background: #bbdefb;
+    background: var(--HoverEditBtn);
 }
 
 .delete-btn {
-    background: #ffebee;
-    color: #d32f2f;
+    background: var(--corFundo);
+    color: var(--DelBtn);
 }
 
 .delete-btn:hover {
-    background: #ffcdd2;
+    background: var(--HoverDelBtn);
 }
 
 /* ===== ESTADO VAZIO ===== */
@@ -380,7 +394,7 @@ select > option{
 }
 
 .btn-secondary {
-    background: var(--secondary-color);
+    background: var(--primary-color);
     color: white;
 }
 
@@ -588,31 +602,40 @@ select > option{
 /* ===== ESTILOS ADICIONAIS PARA NOTIFICAÇÕES ===== */
 /* TODO: Implemente estilos para notificações (opcional) */
 .dark-mode {
-    --primary-color: #000000;
+    --primary-color: #2200e2;
     --primary-gradient: linear-gradient(135deg, #2200e2 0%, #b81fff 100%);
-    --secondary-color: #2200e2;
+    --secondary-color: #b81fff;
     
     --bg-gradient: linear-gradient(135deg, #2200e2 0%, #2f006d 100%);
-    --card-bg: #3c2068;
+    --card-bg: #231c2e;
     --text-primary: #f8f9fa;
     --text-secondary: #d6d6ff;
     --border-color: #d6d6ff;
-    --corFundo: #130101;
+    --corFundo: #2a2335;
     --corFonte:#f8f9fa;
     --corHeader: white;
+    --EditBtn: #004c98;
+    --DelBtn: #a80000;
+    --HoverEditBtn: rgb(0, 76, 152, 0.3);
+    --HoverDelBtn: rgb(168, 0, 0, 0.3);
+    --TarefaConcluida: rgba(127, 52, 255, 0.3);
+    --buttonTema: #231c2e;
     
 }
 
 .trocarTema{
-    padding: 8px 12px;
+    background-color: #f8f9fa;
+    color: #4facfe;
+    padding: 12px 12px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.9rem;
     transition: box-shadow (--transition), border-color (--transition);
 }
+
 .trocarTema:focus {
-    border-color:  #4facfe;
+    border-color: var(--primary-color);
     box-shadow: 0 5px 15px rgb(79, 172, 254, 0.2);;
     outline: none;
 }

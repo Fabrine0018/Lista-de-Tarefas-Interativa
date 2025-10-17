@@ -93,7 +93,7 @@ body {
 /* ===== SEÇÃO DE ENTRADA DE TAREFAS ===== */
 .task-input-section {
     padding: 30px;
-    background: #f8f9fa;
+    background: var(--corFundo);
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -127,7 +127,7 @@ body {
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
     font-size: 1rem;
-    background: white;
+    background: var(--corFundo);
     cursor: pointer;
 }
 select > option{
@@ -158,7 +158,8 @@ select > option{
 /* ===== CONTROLES ===== */
 .controls {
     padding: 20px 30px;
-    background: #f8f9fa;
+    
+    background: var(--corFundo);
     border-bottom: 1px solid var(--border-color);
     display: flex;
     flex-wrap: wrap;
@@ -184,6 +185,7 @@ select > option{
     border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 0.9rem;
+    background: var(--corFundo);
 }
 
 .search-section {
@@ -214,16 +216,19 @@ select > option{
 /* ===== LISTA DE TAREFAS ===== */
 .task-list-container {
     min-height: 300px;
-    padding: 30px;
+    padding: 30px;    
+    background: var(--corFundo);
 }
 
 .task-list {
     list-style: none;
+
 }
 
 /* TODO: Complete os estilos dos itens de tarefa */
 .task-item {
-    background: white;
+
+    background: var(--corFundo);
     border: 1px solid var(--border-color);
     border-radius: 10px;
     margin-bottom: 15px;
@@ -357,7 +362,7 @@ select > option{
 /* ===== AÇÕES ===== */
 .actions {
     padding: 20px 30px;
-    background: #f8f9fa;
+    background: var(--corFundo);
     display: flex;
     gap: 15px;
     justify-content: center;
@@ -535,11 +540,13 @@ select > option{
         /* TODO: Layout vertical para controles */
         flex-direction: column;
         align-items: stretch;
+    background: var(--corFundo);
     }
     
     .stats {
         /* TODO: Centralizar estatísticas */
         justify-content: center;
+        background: var(--corFundo);
     }
     
     .task-item {
@@ -569,6 +576,7 @@ select > option{
     .task-input-section, .task-list-container {
         /* TODO: Reduzir padding */
         padding: 20px;
+        background: var(--corFundo);
     }
     
     .controls {

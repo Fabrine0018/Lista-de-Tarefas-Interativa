@@ -21,17 +21,17 @@ PONTUAÇÃO CSS (20 pontos):
     --primary-color: #4facfe;
     --primary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     --secondary-color: #6c757d;
-    --success-color: #28a745;
     --danger-color: #dc3545;
-    --warning-color: #ffc107;
-    --info-color: #17a2b8;
+
     
-    --bg-gradient: linear-gradient(135deg, #66eae1 0%, #4b9ea2 100%);
+    --bg-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     --card-bg: #ffffff;
     --text-primary: #333333;
     --text-secondary: #6c757d;
     --border-color: #e9ecef;
-    --corFundo: #fff;
+    --corFundo: #f8f9fa;
+    --corFonte:#130101;
+    --corHeader: white;
     
     --border-radius: 8px;
     --border-radius-lg: 15px;
@@ -70,7 +70,7 @@ body {
 /* ===== HEADER ===== */
 .header {
     background: var(--primary-gradient);
-    color: white;
+    color: var(--corHeader);
     padding: 30px;
     text-align: center;
 }
@@ -581,19 +581,17 @@ select > option{
 /* TODO: Implemente estilos para notificações (opcional) */
 .dark-mode {
     --primary-color: #000000;
-    --primary-gradient: linear-gradient(135deg, #970a61 0%, #00f2fe 100%);
-    --secondary-color: #4ef003;
-    --success-color: #b59bf3;
-    --danger-color: #dc3545;
-    --warning-color: #ffc107;
-    --info-color: #960000;
+    --primary-gradient: linear-gradient(135deg, #2200e2 0%, #b81fff 100%);
+    --secondary-color: #2200e2;
     
-    --bg-gradient: linear-gradient(135deg, #2200e2 0%, #c7a200 100%);
-    --card-bg: #ffffff;
-    --text-primary: #54025c;
-    --text-secondary: #6d7d6c;
-    --border-color: #e9ecef;
-    --corFundo: rgb(19, 1, 1);
+    --bg-gradient: linear-gradient(135deg, #2200e2 0%, #2f006d 100%);
+    --card-bg: #3c2068;
+    --text-primary: #f8f9fa;
+    --text-secondary: #d6d6ff;
+    --border-color: #d6d6ff;
+    --corFundo: #130101;
+    --corFonte:#f8f9fa;
+    --corHeader: white;
     
 }
 

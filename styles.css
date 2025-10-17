@@ -31,6 +31,7 @@ PONTUAÇÃO CSS (20 pontos):
     --text-primary: #333333;
     --text-secondary: #6c757d;
     --border-color: #e9ecef;
+    --corFundo: #fff;
     
     --border-radius: 8px;
     --border-radius-lg: 15px;
@@ -592,6 +593,7 @@ select > option{
     --text-primary: #54025c;
     --text-secondary: #6d7d6c;
     --border-color: #e9ecef;
+    --corFundo: rgb(19, 1, 1);
     
 }
 

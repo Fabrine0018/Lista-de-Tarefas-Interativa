@@ -276,7 +276,7 @@ function clearAll() {
         renderTasks();
         
         // TODO: Mostre notificação
-        showNotification('Todas as tarefas foram removidas!', 'success');
+        showNotification('Todas as tarefas foram removidas!', 'error');
     }
 }
 
@@ -564,6 +564,7 @@ const htmlElement = document.documentElement; // Pega o elemento
 themeToggle.addEventListener('click', () => {
 htmlElement.classList.toggle('dark-mode');
 });
+
 // TODO: Implemente funcionalidades extras para pontos adicionais:
 // - Drag and drop para reordenar tarefas - tentar
 // - Categorias/tags para tarefas - tentar
